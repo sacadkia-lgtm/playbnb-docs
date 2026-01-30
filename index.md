@@ -8,21 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #f7f9fc;
+      --bg: #000000; /* page background changed to black */
       --card: #fff;
-      --muted: #6b7280;
+      --muted: #ffffff; /* text color changed to white */
       --accent: #6b46ff;
       --accent-2: #7f9cf5;
       --success: #10b981;
       --danger: #ef4444;
-      --glass: rgba(255,255,255,0.75);
+      --glass: rgba(255,255,255,0.05);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:linear-gradient(180deg,#f8fafc 0%,var(--bg) 100%);
-      color:#0f172a;
+      background:var(--bg);
+      color:#ffffff; /* all text set to white */
       padding:28px;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -119,6 +119,8 @@
       border:1px solid rgba(2,6,23,0.06);
       min-width:220px;
       font-family:inherit;
+      background:#f8fafc;
+      color:#0f172a;
     }
     button.btn{
       background:var(--accent);
@@ -142,7 +144,7 @@
     .content-section{
       margin-top:16px;
       padding-top:8px;
-      border-top:1px dashed rgba(2,6,23,0.04);
+      border-top:1px dashed rgba(255,255,255,0.08);
     }
     h2{font-size:16px;margin:8px 0}
     ul{margin:8px 0 0 18px;color:var(--muted)}
@@ -150,7 +152,7 @@
     .footer-note{margin-top:12px;color:var(--muted);font-size:13px}
 
     a.bscscan{
-      color:#1f2937;
+      color:#ffffff; /* ensure link text is white on black background */
       text-decoration:none;
       font-weight:600;
       background:#f3f4f6;
