@@ -8,21 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #000000; /* page background changed to black */
-      --card: #fff;
-      --muted: #ffffff; /* text color changed to white */
+      --bg: #000000; /* page background */
+      --card: #000000; /* card background */
+      --muted: #ffffff; /* primary text color (white) */
       --accent: #6b46ff;
       --accent-2: #7f9cf5;
       --success: #10b981;
       --danger: #ef4444;
-      --glass: rgba(255,255,255,0.05);
+      --glass: rgba(255,255,255,0.03); /* subtle panel */
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background:var(--bg);
-      color:#ffffff; /* all text set to white */
+      color:var(--muted);
       padding:28px;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -38,11 +38,12 @@
       background:var(--card);
       border-radius:12px;
       padding:20px;
-      box-shadow:0 12px 30px rgba(2,6,23,0.06);
+      box-shadow:0 12px 30px rgba(255,255,255,0.03);
       display:flex;
       gap:20px;
       align-items:flex-start;
       flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,0.04);
     }
 
     .left{
@@ -81,7 +82,7 @@
       border-radius:8px;
       padding:10px 12px;
       min-width:170px;
-      border:1px solid rgba(2,6,23,0.04);
+      border:1px solid rgba(255,255,255,0.04);
     }
     .stat .label{font-size:13px;color:var(--muted)}
     .stat .value{font-weight:700;font-size:18px;margin-top:6px}
@@ -98,8 +99,9 @@
       align-items:center;
       padding:8px;
       border-radius:8px;
-      border:1px solid rgba(2,6,23,0.04);
-      background:#fff;
+      border:1px solid rgba(255,255,255,0.04);
+      background:var(--card);
+      color:var(--muted);
     }
     .dot{
       width:14px;height:14px;border-radius:4px;
@@ -116,11 +118,11 @@
     input.contract{
       padding:8px 10px;
       border-radius:8px;
-      border:1px solid rgba(2,6,23,0.06);
+      border:1px solid rgba(255,255,255,0.06);
       min-width:220px;
       font-family:inherit;
-      background:#f8fafc;
-      color:#0f172a;
+      background:rgba(255,255,255,0.04);
+      color:var(--muted);
     }
     button.btn{
       background:var(--accent);
@@ -132,8 +134,8 @@
       font-weight:600;
     }
     button.secondary{
-      background:#eef2ff;
-      color:#3730a3;
+      background:rgba(255,255,255,0.06);
+      color:var(--muted);
       border:none;
       padding:8px 12px;
       border-radius:8px;
@@ -152,13 +154,13 @@
     .footer-note{margin-top:12px;color:var(--muted);font-size:13px}
 
     a.bscscan{
-      color:#ffffff; /* ensure link text is white on black background */
+      color:var(--muted);
       text-decoration:none;
       font-weight:600;
-      background:#f3f4f6;
+      background:rgba(255,255,255,0.04);
       padding:6px 10px;
       border-radius:8px;
-      border:1px solid rgba(2,6,23,0.04);
+      border:1px solid rgba(255,255,255,0.04);
     }
 
     @media (max-width:900px){
