@@ -149,6 +149,16 @@
 
     .footer-note{margin-top:12px;color:var(--muted);font-size:13px}
 
+    a.bscscan{
+      color:#1f2937;
+      text-decoration:none;
+      font-weight:600;
+      background:#f3f4f6;
+      padding:6px 10px;
+      border-radius:8px;
+      border:1px solid rgba(2,6,23,0.04);
+    }
+
     @media (max-width:900px){
       .card{padding:14px}
       canvas{height:280px}
@@ -180,12 +190,14 @@
         <div class="legend" id="legend"></div>
 
         <div class="controls">
-          <input id="contract" class="contract" placeholder="Contract address (BEP-20) — paste here" />
+          <!-- Contract input is pre-filled and readonly so users can copy it -->
+          <input id="contract" class="contract" value="0xeAc2497fCb9622012e3eD78d68476eC445ae99EE" readonly />
           <button id="copyBtn" class="btn">Copy Address</button>
+          <a id="bscscanLink" class="bscscan" href="https://bscscan.com/address/0xeAc2497fCb9622012e3eD78d68476eC445ae99EE" target="_blank" rel="noopener">View on BscScan</a>
           <button id="downloadBtn" class="secondary">Download CSV</button>
         </div>
 
-        <div class="footer-note">Note: Percentages and labels are editable in the file. If you have a real contract address or vesting schedule, add them for transparency.</div>
+        <div class="footer-note">Note: Percentages and labels are editable in the file. If you have a vesting schedule, add it for transparency.</div>
       </div>
 
       <div class="right">
@@ -230,8 +242,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script>
     // Token supply numbers (edit here if needed)
-    const TOTAL_SUPPLY = 100_000_000_000;        // 100 billion
-    const CIRCULATING_SUPPLY = 20_000_000_000;   // 20 billion
+    const TOTAL_SUPPLY = 100000000000;        // 100 billion
+    const CIRCULATING_SUPPLY = 20000000000;   // 20 billion
 
     // Distribution configuration (percentages must sum to 100)
     const distribution = [
@@ -305,6 +317,7 @@
         setTimeout(()=> this.textContent = 'Copy Address', 1400);
         return;
       }
+      // navigator.clipboard requires secure context (https or localhost)
       navigator.clipboard.writeText(text).then(() => {
         const prev = this.textContent;
         this.textContent = 'Copied';
@@ -324,7 +337,7 @@
         d.pct,
         Math.round((d.pct/100) * TOTAL_SUPPLY)
       ]));
-      const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(',')).join('\\n');
+      const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(',')).join('\n');
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
